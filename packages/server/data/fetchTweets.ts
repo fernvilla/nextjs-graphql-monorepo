@@ -2,8 +2,8 @@ import Twitter from 'twitter-lite';
 import { PrismaClient } from '@prisma/client';
 import { differenceInDays } from 'date-fns';
 import { decode } from 'html-entities';
-import { TwitterAccount } from '@sports-blitz/shared/interfaces/twitterAccount';
-import { Tweet } from '@sports-blitz/shared/interfaces/tweet';
+import { TwitterAccount } from '@sports-blitz/shared/types/twitterAccount';
+import { Tweet } from '@sports-blitz/shared/types/tweet';
 import { sendErrorEmail } from '@sports-blitz/shared/utils/emails';
 
 const prisma = new PrismaClient();

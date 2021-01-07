@@ -22,7 +22,7 @@ const typeDefs = `
     id: ID!      
     accountName: String  
     team: Team       
-    league: League     
+    league: League
   }
 
   type Tweet {
