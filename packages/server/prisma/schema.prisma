@@ -1,0 +1,53 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model League {
+  id              Int              @id @default(autoincrement())
+  name            String
+  shortName       String
+  slug            String           @unique
+  teams           Team[]
+  twitterAccounts TwitterAccount[]
+}
+
+model Team {
+  id              Int              @id @default(autoincrement())
+  name            String
+  shortName       String
+  slug            String           @unique
+  league          League?          @relation(fields: [leagueId], references: [id])
+  leagueId        Int?
+  twitterAccounts TwitterAccount[]
+}
+
+model TwitterAccount {
+  id          Int     @id @default(autoincrement())
+  accountName String  @unique
+  team        Team?   @relation(fields: [teamId], references: [id])
+  league      League? @relation(fields: [leagueId], references: [id])
+  teamId      Int?
+  tweets      Tweet[]
+  leagueId    Int?
+}
+
+model Tweet {
+  id                    Int             @id @default(autoincrement())
+  publishedDate         DateTime        @default(now())
+  tweetText             String
+  tweetId               String          @unique
+  displayName           String
+  profileImageUrl       String?
+  profileBannerImageUrl String?
+  mediaUrl              String?
+  twitterAccount        TwitterAccount? @relation(fields: [twitterAccountId], references: [id])
+  twitterAccountId      Int?
+}

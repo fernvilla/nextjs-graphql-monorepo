@@ -1,0 +1,20 @@
+{
+  "name": "sports-blitz",
+  "version": "1.0.0",
+  "author": "Fernando Villasenor <fvilla18@gmail.com>",
+  "scripts": {
+    "build": "yarn workspace @sports-blitz/client run build",
+    "start": "yarn workspace @sports-blitz/server run start",
+    "dev": "export $(cat .env | xargs) && yarn workspace @sports-blitz/server run dev",
+    "fetch-data": "yarn workspace @sports-blitz/server run fetch-tweets"
+  },
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "engines": {
+    "node": "14.x",
+    "yarn": "1.x",
+    "npm": "6.x"
+  }
+}
