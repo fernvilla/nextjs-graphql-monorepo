@@ -2,6 +2,8 @@ import { makeExecutableSchema } from '@graphql-tools/schema';
 import { Context } from './context';
 
 const typeDefs = `
+  scalar Date
+
   type League {
     id: ID!
     name: String
@@ -27,7 +29,7 @@ const typeDefs = `
 
   type Tweet {
     id: ID!
-    publishedDate: String
+    publishedDate: Date
     tweetText: String
     tweetId: String
     displayName: String
