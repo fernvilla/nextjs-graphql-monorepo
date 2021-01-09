@@ -3,7 +3,7 @@ import TweetFeed from '../components/TweetFeed';
 import { MAX_CONTAINER_WIDTH } from '../constants';
 import { Tweet } from '@sports-blitz/shared/types/tweet';
 import { gql, useQuery } from '@apollo/client';
-import { addApolloState, initializeApollo } from '../lib/apolloClient';
+// import { addApolloState, initializeApollo } from '../lib/apolloClient';
 
 const TweetsQuery = gql`
   query TweetsQuery {
@@ -33,17 +33,17 @@ const Home = () => {
   );
 };
 
-export async function getStaticProps() {
-  const apolloClient = initializeApollo();
+// export async function getStaticProps() {
+//   const apolloClient = initializeApollo();
 
-  await apolloClient.query({
-    query: TweetsQuery
-  });
+//   await apolloClient.query({
+//     query: TweetsQuery
+//   });
 
-  return addApolloState(apolloClient, {
-    props: {},
-    revalidate: 1
-  });
-}
+//   return addApolloState(apolloClient, {
+//     props: {},
+//     revalidate: 1
+//   });
+// }
 
 export default Home;
