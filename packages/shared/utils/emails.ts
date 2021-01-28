@@ -9,8 +9,8 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY || '');
 export const sendErrorEmail = async (subject: string, text: string) => {
   try {
     const msg = {
-      to: 'sportsnucleus.io@gmail.com',
-      from: 'sportsnucleus.io@gmail.com',
+      to: process.env.EMAIL_ADDRESS,
+      from: process.env.EMAIL_ADDRESS,
       subject,
       text
     };
